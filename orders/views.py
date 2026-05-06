@@ -8,7 +8,8 @@ from django.template.loader import render_to_string
 from .forms import WorkOrderFilterForm, WorkOrderForm
 from .models import WorkOrder
 from .services import filter_work_orders, generate_orders_pdf, generate_single_order_pdf
-from weasyprint import HTML
+# descomentar para que la funcion crear pdf funciones
+# from weasyprint import HTML
 
 
 @login_required
@@ -99,12 +100,23 @@ def export_pdf_list(request):
     return response
 
 
+# Genrea el pdf pero solo para demostracion de cliente
 @login_required
-def export_pdf_weasy(request, pk):
-    """Exporta el detalle de una orden como PDF usando WeasyPrint."""
+def exportar_pdf_weasy(request, pk):
+    """Exporta detalle de orden como PDF con ReportLab."""
+    order = get_object_or_404(WorkOrder, pk=pk)
+    buffer = generate_single_order_pdf(order)
+    response = HttpResponse(buffer, content_type="application/pdf")
+    response["Content-Disposition"] = f'attachment; filename="{order.code}.pdf"'
+    return response
+
+
+# esta funcion espera produccion de cliente genera dpf maquetado css
+"""def export_pdf_weasy(request, pk):
+    Exporta el detalle de una orden como PDF usando WeasyPrint.
     order = get_object_or_404(WorkOrder, pk=pk)
     html_string = render_to_string("orders/pdf_orden.html", {"orden": order})
     pdf = HTML(string=html_string).write_pdf()
     response = HttpResponse(pdf, content_type="application/pdf")
     response["Content-Disposition"] = f'attachment; filename="{order.code}.pdf"'
-    return response
+    return response"""
