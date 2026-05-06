@@ -10,5 +10,7 @@ urlpatterns = [
     path("<int:pk>/editar/", views.order_edit, name="edit"),
     path("<int:pk>/eliminar/", views.order_delete, name="delete"),
     path("exportar/pdf/", views.export_pdf_list, name="export_pdf"),
-    path("<int:pk>/pdf/weasy/", views.export_pdf_weasy, name="export_pdf_weasy"),
+    path("<int:pk>/pdf/weasy/", views.exportar_pdf_weasy, name="export_pdf_weasy"),
+    # vista para genrar pdf con css de comentar poder usar la funcion
+    # path("<int:pk>/pdf/weasy/", views.export_pdf_weasy, name="export_pdf_weasy"),
 ]
