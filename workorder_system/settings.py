@@ -53,7 +53,7 @@ WSGI_APPLICATION = "workorder_system.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": "/data/db.sqlite3",
+        "NAME": "/tmp/db.sqlite3",
     }
 }
 
