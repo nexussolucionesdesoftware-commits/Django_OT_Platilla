@@ -25,7 +25,7 @@
 
     {% if user.is_authenticated %}
     <!-- Desktop Sidebar (Hidden on mobile) -->
-    <div class="col-auto sidebar px-3 py-4 d-none d-md-block" style="width:220px">
+    <div class="col-auto sidebar px-3 py-4 d-none d-lg-block" style="width:220px">
       <div class="brand mb-4 ps-2"><i class="bi bi-tools me-2"></i>OT Sistema</div>
       <nav class="nav flex-column">
         <a class="nav-link {% if request.resolver_match.app_name == 'orders' and 'list' in request.resolver_match.url_name %}active{% endif %}"
@@ -55,7 +55,7 @@
     </div>
 
     <!-- Mobile Offcanvas Sidebar -->
-    <div class="offcanvas offcanvas-start sidebar px-3 py-4 d-md-none" tabindex="-1" id="sidebarMenu" style="width:250px">
+    <div class="offcanvas offcanvas-start sidebar px-3 py-4 d-lg-none" tabindex="-1" id="sidebarMenu" style="width:250px">
       <div class="offcanvas-header p-0 mb-4">
         <div class="brand ps-2"><i class="bi bi-tools me-2"></i>OT Sistema</div>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -92,7 +92,7 @@
 
     <!-- Main -->
     <div class="col main-content p-4">
-      <div class="d-md-none mb-3">
+      <div class="d-lg-none mb-3">
         <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
           <i class="bi bi-list"></i> Menú
         </button>
